@@ -1,0 +1,63 @@
+<!-- login.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+Login - My Expense Tracker
+{% endblock %}
+
+{% block content1 %}
+<h1>Login to My Expense Tracker</h1>
+<!-- Display form errors -->
+{% if form.non_field_errors %}
+<div class="alert alert-danger">
+    {% for error in form.non_field_errors %}
+    {{ error }}
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Login form -->
+<table border="1" style="width: 400px; height: 200px;"> <!-- Define a table with borders -->
+            <tr>
+                <td>
+                    <center>
+                    <form method="post">
+                    {% csrf_token %}
+    <!-- Display username field with potential error -->
+                    <div class="mb-3">
+                        <strong>{{ form.username.label_tag }}</strong>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                        <div class="text-danger">
+                            {% for error in form.username.errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                        <p> </p>
+                    <!-- Display password field with potential error -->
+                    <div class="mb-3">
+                        <strong>{{ form.password.label_tag }}</strong>
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                        <div class="text-danger">
+                            {% for error in form.password.errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    </center>
+
+                    <!-- Submit button -->
+                    <center>
+                        <p></p>
+                        <p></p>
+                    <button type="submit" style="display: inline-block; padding: 5px 15px; font-size: 16px; text-decoration: none; background-color: #4682b4; color: #fff; border-radius: 5px;" class="btn btn-primary">Login</button>
+                    </center>
+                </form>
+                </td>
+            </tr>
+        </table>{% endblock %}

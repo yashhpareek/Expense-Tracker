@@ -1,0 +1,40 @@
+<!-- add_expense.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Expense - My Expense Tracker
+{% endblock %}
+
+{% block content1 %}
+    <center>
+    <h1>Add New Expense</h1>
+        <table border="4" style="width: 400px; height: 200px;"> <!-- Define a table with borders -->
+        <tr>
+            <td>
+                <center>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Display each form field within a table row and cell -->
+                    <p>
+                        <label for="id_category">Category:</label>
+                        {{ form.category }}
+                    </p>
+                    <p>
+                        <label for="id_amount">Amount:</label>
+                        {{ form.amount }}
+                    </p>
+                    <p>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </p>
+                    </center>
+                    <center>
+                    <button type="submit">Add Expense</button>
+                    </center>
+                </form>
+            </td>
+        </tr>
+    </table>
+    </center>
+{% endblock %}
